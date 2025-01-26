@@ -2,7 +2,7 @@
   "compilerOptions": {
       "baseUrl": ".",
       "outDir": "./build",
-      "rootDir": "src",
+      "rootDir": ".",  
       "module": "NodeNext",
       "moduleResolution": "nodenext",
       "declaration": true,
@@ -22,8 +22,8 @@
       "strictPropertyInitialization": false,
       "noFallthroughCasesInSwitch": false,
       "paths": {
-          "lib/*": ["src/*"],
-          "test/*": ["test/*"]
+          "@storage/*": ["src/storage/*"],
+          "@test/*": ["test/*"]
       }
   },
   "include": ["src/**/*", "test/**/*"],

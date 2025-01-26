@@ -1,1 +1,1 @@
-{"root":["./src/index.ts"],"version":"5.7.3"}
+{"root":["./src/index.ts","./src/storage/container.ts","./src/storage/interfaces.ts","./src/storage/types.ts","./src/storage/core/document.ts","./src/storage/core/id.ts","./src/storage/core/storage.service.ts","./src/storage/index/index.service.ts","./src/storage/meta/column.ts","./src/storage/meta/meta.service.ts"],"version":"5.7.3"}
