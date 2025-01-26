@@ -1,31 +1,31 @@
 {
-  "compilerOptions": {
-      "baseUrl": ".",
-      "outDir": "./build",
-      "rootDir": ".",  
-      "module": "NodeNext",
-      "moduleResolution": "nodenext",
-      "declaration": true,
-      "removeComments": true,
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "esModuleInterop": true,
-      "forceConsistentCasingInFileNames": true,
-      "target": "ES2024",
-      "lib": ["ES2024"],
-      "sourceMap": true,
-      "strict": true,
-      "skipLibCheck": true,
-      "strictNullChecks": true,
-      "noImplicitAny": true,
-      "strictBindCallApply": false,
-      "strictPropertyInitialization": false,
-      "noFallthroughCasesInSwitch": false,
-      "paths": {
-          "@storage/*": ["src/storage/*"],
-          "@test/*": ["test/*"]
-      }
-  },
-  "include": ["src/**/*", "test/**/*"],
-  "exclude": ["node_modules", "build"]
+    "compilerOptions": {
+        "baseUrl": ".",
+        "outDir": "./build",
+        "rootDir": ".",
+        "module": "NodeNext",
+        "moduleResolution": "nodenext",
+        "declaration": true,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "target": "ES2024",
+        "lib": ["ES2024"],
+        "sourceMap": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        "strictBindCallApply": false,
+        "strictPropertyInitialization": false,
+        "noFallthroughCasesInSwitch": false,
+        "paths": {
+            "@storage/*": ["src/storage/*"],
+            "@test/*": ["test/*"]
+        }
+    },
+    "include": ["src/**/*", "test/**/*"],
+    "exclude": ["node_modules", "build"]
 }

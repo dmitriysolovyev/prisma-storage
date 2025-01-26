@@ -4,6 +4,6 @@ import { MetaService } from "./meta/meta.service";
 
 // TODO Use DI lib
 // TODO Use Facade pattern to have one API for storage
-export const metaService = new MetaService()
-export const storageService = new StorageService(metaService)
-export const indexService = new IndexService(storageService)
+export const metaService = new MetaService();
+export const storageService = new StorageService(metaService);
+export const indexService = new IndexService(storageService);
