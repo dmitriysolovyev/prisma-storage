@@ -30,5 +30,5 @@ export interface IndexApi {
     getIndex(column: ColumnMeta): Index;
     create(column: ColumnMeta): void;
     findOne(column: ColumnMeta, value: string): DocumentId;
-    traversalFrom(column: ColumnMeta, value: string): Array<DocumentId>;
+    traversalGreater(column: ColumnMeta, value: string): Array<DocumentId>;
 }

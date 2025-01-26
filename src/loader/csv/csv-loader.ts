@@ -5,7 +5,7 @@ import { Loader } from "@loader/interfaces";
 import { DataManipulator } from "@storage/interfaces";
 import { RawDocument } from "@storage/types";
 
-export class CscLoader implements Loader {
+export class CsvLoader implements Loader {
     constructor(private readonly _storage: DataManipulator) {}
 
     async loadFromStream(stream: Readable): Promise<void> {
@@ -17,8 +17,13 @@ export class CscLoader implements Loader {
                 while ((record = parser.read()) !== null) {
                     // TODO validate
                     this._insertDocument(record);
+                    console.log("Document has been upload", record);
                 }
             });
+            stream.on("error", () => {
+                console.error("Error to read file");
+            });
+
             await finished(parser);
         } catch (err) {
             throw new Error(`Error during CSV upload`, { cause: err });

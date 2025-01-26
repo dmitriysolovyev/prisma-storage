@@ -52,7 +52,7 @@ export class IndexService implements IndexApi {
         return index[valueIndex].id;
     }
 
-    traversalFrom(column: ColumnMeta, value: string): Array<DocumentId> {
+    traversalGreater(column: ColumnMeta, value: string): Array<DocumentId> {
         const index = this.getIndex(column);
 
         const valueIndex = this._binarySearchGreater(
@@ -89,17 +89,34 @@ export class IndexService implements IndexApi {
 
     // TODO Uncouple
     private _binarySearchGreater(index: Index, value: ColumnType): number | null {
-        let start = 0,
-            end = index.length - 1;
-        while (start <= end) {
-            if (start === end && index[start].value > value) {
-                return start;
+        const search = (index: Index, value: ColumnType): number | null => {
+            let start = 0,
+                end = index.length - 1;
+            while (start <= end) {
+                if (start === end && index[start].value > value) {
+                    return start;
+                }
+
+                const mid = Math.floor((start + end) / 2);
+                if (index[mid].value === value) return mid;
+                else if (index[mid].value < value) start = mid + 1;
+                else end = mid - 1;
             }
 
-            const mid = Math.floor((start + end) / 2);
-            if (index[mid].value === value) return mid;
-            else if (index[mid].value < value) start = mid + 1;
-            else end = mid - 1;
+            return null;
+        };
+
+        let indexOfStart = search(index, value);
+        if (indexOfStart === null) {
+            return null;
+        }
+
+        while (indexOfStart < index.length) {
+            if (index[indexOfStart].value > value) {
+                return indexOfStart;
+            }
+
+            indexOfStart++;
         }
 
         return null;

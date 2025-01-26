@@ -117,7 +117,7 @@ describe("IndexService", (): void => {
         });
     });
 
-    describe("traversalFrom", (): void => {
+    describe("traversalGreater", (): void => {
         it("should traversal documents by string column", async (): Promise<void> => {
             const metaService = new MetaService();
             const storageService = new StorageService(metaService);
@@ -136,18 +136,17 @@ describe("IndexService", (): void => {
             };
             storageService.insert(document1);
             const id2 = storageService.insert(document2);
-            const id3 = storageService.insert(document3);
+            storageService.insert(document3);
             const colMeta = metaService.columns.find((col) => col.name === "p1");
             if (!colMeta) {
                 throw new Error("Column is not found");
             }
             indexService.create(colMeta);
 
-            const result = indexService.traversalFrom(colMeta, "string2");
+            const result = indexService.traversalGreater(colMeta, "string2");
 
-            expect(result.length).toBe(2);
-            expect(result[0].value).toBe(id3.value);
-            expect(result[1].value).toBe(id2.value);
+            expect(result.length).toBe(1);
+            expect(result[0].value).toBe(id2.value);
         });
 
         it("should traversal documents by number column", async (): Promise<void> => {
@@ -168,18 +167,17 @@ describe("IndexService", (): void => {
             };
             const id1 = storageService.insert(document1);
             const id2 = storageService.insert(document2);
-            const id3 = storageService.insert(document3);
+            storageService.insert(document3);
             const colMeta = metaService.columns.find((col) => col.name === "p2");
             if (!colMeta) {
                 throw new Error("Column is not found");
             }
             indexService.create(colMeta);
 
-            const result = indexService.traversalFrom(colMeta, "1");
-            expect(result.length).toBe(3);
-            expect(result[0].value).toBe(id3.value);
-            expect(result[1].value).toBe(id1.value);
-            expect(result[2].value).toBe(id2.value);
+            const result = indexService.traversalGreater(colMeta, "1");
+            expect(result.length).toBe(2);
+            expect(result[0].value).toBe(id1.value);
+            expect(result[1].value).toBe(id2.value);
         });
 
         it("should traversal documents by number column, from not equal value", async (): Promise<void> => {
@@ -207,7 +205,7 @@ describe("IndexService", (): void => {
             }
             indexService.create(colMeta);
 
-            const result = indexService.traversalFrom(colMeta, "41");
+            const result = indexService.traversalGreater(colMeta, "41");
             expect(result.length).toBe(1);
             expect(result[0].value).toBe(id2.value);
         });
@@ -237,7 +235,7 @@ describe("IndexService", (): void => {
             }
             indexService.create(colMeta);
 
-            const result = indexService.traversalFrom(colMeta, "201");
+            const result = indexService.traversalGreater(colMeta, "201");
             expect(result.length).toBe(0);
         });
     });
