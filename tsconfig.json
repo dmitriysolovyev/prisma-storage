@@ -23,6 +23,7 @@
         "noFallthroughCasesInSwitch": false,
         "paths": {
             "@storage/*": ["src/storage/*"],
+            "@loader/*": ["src/loader/*"],
             "@test/*": ["test/*"]
         }
     },

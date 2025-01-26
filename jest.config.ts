@@ -17,6 +17,7 @@ const config: Config = {
     testRegex: [".*\\.spec\\.ts$"],
     moduleNameMapper: {
         "^@storage/(.+)$": "<rootDir>/src/storage/$1",
+        "^@loader/(.+)$": "<rootDir>/src/loader/$1",
         "^@test/(.+)$": "<rootDir>/test/$1",
     },
     transform: {
